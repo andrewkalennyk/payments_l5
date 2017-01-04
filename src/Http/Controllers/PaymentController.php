@@ -25,7 +25,8 @@ class PaymentController extends Controller
 
 	public function getResponse()
 	{
-		Log::info('paymaster', ['info' => Input::all()]); 
+		Log::info('payment', ['info' => Input::all()]);
+
 	}
 
 }

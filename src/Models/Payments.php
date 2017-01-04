@@ -40,7 +40,8 @@ class Payments extends Model {
 	}
 
 	public function check() {
-		$order = $this->payment->checkPayment();
+		
+		return $this->payment->checkPayment();
 	}
 
 }

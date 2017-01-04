@@ -1,5 +1,4 @@
 <?php
-/*Route::group (['middleware' => ['web']], function () {*/
     Route::group (['prefix' => '/order'],
         function () {
             Route::get('/redirect/{type}', [
@@ -8,10 +7,6 @@
                 'uses' => 'Vis\Payments\Controllers\PaymentController@showPaymentRedirect'
             ]);
 
-            Route::post('/paymaster-pay-response', [
-                'middleware' => 'web',
-                'uses' => 'Vis\Payments\Controllers\PaymentController@getResponse'
-            ]);
+            Route::post('/paymaster/pay-response', 'Vis\Payments\Controllers\PaymentController@getResponse');
 
-        });
-/*});*/
+    });

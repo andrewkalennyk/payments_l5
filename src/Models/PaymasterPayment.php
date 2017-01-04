@@ -31,14 +31,29 @@ class PaymasterPayment
     
     public function checkPayment()
     {
-
         $paymasterData['LMI_MERCHANT_ID'] = $this->merchId;
         $paymasterData['LMI_PAYMENT_NO'] = $this->data['orderId'];
-        $paymasterData['LMI_HASH'] = '';
         
         $xml = view('payments::paymaster.command', compact('paymasterData'))->render();
-        $hash = $xml . 
-        dr($xml);
+        $hash = hash( 'sha256', $xml . $this->data['secretKey'] );
+
+        $xml = view('payments::paymaster.command', compact('paymasterData','hash'))->render();
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_URL, "https://api.paymaster.ua/merchants/get-transaction");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+        $content=curl_exec($ch);
+        $result = simplexml_load_string($content);
+        if ($result) {
+            return $result->Retdata->Transaction;
+        } else {
+            return false;
+        }
+        
+       
     }
 
 }

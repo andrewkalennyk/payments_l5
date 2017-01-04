@@ -1,6 +1,6 @@
 <Command>
-    <LMI_MERCHANT_ID></LMI_MERCHANT_ID>
-    <LMI_PAYMENT_NO></LMI_PAYMENT_NO>
-    <LMI_SYS_PAYMENT_ID></LMI_SYS_PAYMENT_ID>
-    <LMI_HASH></LMI_HASH>
+@foreach($paymasterData as $key => $value)
+    <{{$key}}>{{$value}}</{{$key}}>
+@endforeach
+    <LMI_HASH>{{!empty($hash) ? $hash : ''}}</LMI_HASH>
 </Command>
