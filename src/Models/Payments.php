@@ -3,13 +3,15 @@
 namespace Vis\Payments;
 
 use Illuminate\Database\Eloquent\Model;
-use Vis\Payments\PaymasterPayment;
 
 class Payments extends Model {
 
 	protected $payment = '';
 
 	public function __construct($type,$data) {
+
+		/*parent::__construct($type,$data);*/
+
 		if (!$type) {
 			throw new Exception('Payment type is not defined!');
 		}
@@ -35,6 +37,10 @@ class Payments extends Model {
 		} else {
 			return false;
 		}
+	}
+
+	public function check() {
+		$order = $this->payment->checkPayment();
 	}
 
 }

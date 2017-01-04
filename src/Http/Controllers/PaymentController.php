@@ -16,7 +16,7 @@ class PaymentController extends Controller
 
 			$params = session('payment');
 
-			return view('payments::paymaster', compact("params"));
+			return view('payments::paymaster.paymaster', compact("params"));
 		} else {
 			// todo:
 		}
@@ -25,7 +25,7 @@ class PaymentController extends Controller
 
 	public function getResponse()
 	{
-		Log::info('paymaster', ['info' => Input::all()]);
+		Log::info('paymaster', ['info' => Input::all()]); 
 	}
 
 }

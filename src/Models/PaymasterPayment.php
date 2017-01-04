@@ -28,5 +28,17 @@ class PaymasterPayment
         
         return true;
     }
+    
+    public function checkPayment()
+    {
+
+        $paymasterData['LMI_MERCHANT_ID'] = $this->merchId;
+        $paymasterData['LMI_PAYMENT_NO'] = $this->data['orderId'];
+        $paymasterData['LMI_HASH'] = '';
+        
+        $xml = view('payments::paymaster.command', compact('paymasterData'))->render();
+        $hash = $xml . 
+        dr($xml);
+    }
 
 }

@@ -2,6 +2,7 @@
 
 return array(
 	'paymaster' => array(
-		'merchId' => "", /* put here merchantID */
+		'merchId' => "",
+		'secret_key' => ""/* put here merchantID */
 	)
 );
