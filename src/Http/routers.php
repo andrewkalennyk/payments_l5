@@ -8,5 +8,10 @@
                 'uses' => 'Vis\Payments\Controllers\PaymentController@showPaymentRedirect'
             ]);
 
+            Route::post('/paymaster-pay-response', [
+                'middleware' => 'web',
+                'uses' => 'Vis\Payments\Controllers\PaymentController@getResponse'
+            ]);
+
         });
 /*});*/
