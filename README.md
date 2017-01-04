@@ -1,9 +1,11 @@
 В composer.json добавляем в блок require
 
  "vis-a-vis/payments": "dev-master"
+ 
 Выполняем
 
 composer update
+
 Добавляем в app.php в массив providers
 
   Vis\Payments\PaymentsServiceProvider::class,
