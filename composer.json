@@ -1,0 +1,20 @@
+{
+    "name": "vis/payments",
+    "description": "Payments for L5",
+    "authors": [
+        {
+            "name": "A.Kalennyk",
+            "email": "andrey.k@vis-design.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/Models",
+            "src/Http/Controllers"
+        ],
+        "psr-4": {
+            "Vis\\Payments\\": "src/"
+        }
+    },
+    "require": {}
+}
