@@ -1,6 +1,6 @@
 В composer.json добавляем в блок require
 
- "vis-a-vis/payments": "dev-master"
+ "vis-a-vis/payments": "1.0.*"
  
 Выполняем
 
@@ -28,3 +28,13 @@ php artisan vendor:publish --tag=payments --force
     if ($payment->redirectRoute) {
         return redirect()->route($payment->redirectRoute, ['paymaster'])->with('payment',$payment->paymentInfo);
     }
+
+Проверка статуса заказа
+
+$payment = new Payments('paymaster',
+                array(
+                    'orderId' => 'Moyogidev'.$order->id,
+                    'secretKey' => config('payments.config.paymaster.secret_key')
+                    )
+            );
+$result = $payment->check();
